@@ -5,6 +5,22 @@ publish_mode: editorial_workflow
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    sort: "date:desc"
+    fields:
+      - {label: "Type", name: "type", widget: "string", required: false}
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: Summary 164-220, name: summary, widget: text, required: true, pattern: ['.{164,220}', "Must be within 164 and 220 characters"]}
+      - {label: "Publish Date", name: "date", widget: "date", required: true}
+      - {label: "Updated Date", name: "update", widget: "date", required: false}
+      - {label: "Author", name: "author", widget: "string", required: true}
+      - {label: "Author Link", name: "authorlink", widget: "string", required: false}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: true}
   - name: "news"
     label: "News"
     folder: "content/news"

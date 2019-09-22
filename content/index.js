@@ -65,5 +65,5 @@ const writeEntries = async (type) => {
   })
 }
 
-const types = ['news', 'events', 'jobs']
+const types = ['blog', 'news', 'events', 'jobs']
 types.map((type) => writeEntries(type))

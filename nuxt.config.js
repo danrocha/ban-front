@@ -1,3 +1,4 @@
+import blog from './content/blog.json'
 import news from './content/news.json'
 import jobs from './content/jobs.json'
 import events from './content/events.json'
@@ -154,6 +155,7 @@ export default {
   },
   generate: {
     routes: [
+      ...blog.map((blog) => `/blog/${blog.slug}`),
       ...news.map((news) => `/news/${news.slug}`),
       ...jobs.map((job) => `/jobs/${job.slug}`),
       ...events.map((event) => `/events/${event.slug}`)
