@@ -12,7 +12,7 @@ const getFiles = (dir) => {
   const filelist = []
 
   files.forEach((file) => {
-    const markdownFile = fs.readFileSync(`content/blog/${file}`, 'utf-8')
+    const markdownFile = fs.readFileSync(`${dir}${file}`, 'utf-8')
     const fileContents = parseMarkdown(markdownFile)
     const date = fileContents.date
     const slug = file
@@ -30,8 +30,26 @@ const getFiles = (dir) => {
 /**
  * Write blogs json file
  */
-const writeBlogs = async () => {
-  const fileArray = await getFiles('content/blog/')
+// const writeBlogs = async () => {
+//   const fileArray = await getFiles('content/blog/')
+
+//   // Order array by date (default asc)
+//   const sortedArray = await fileArray.sort((a, b) => {
+//     return a.date.getTime() - b.date.getTime()
+//   })
+
+//   // Reverse array and write to JSON
+//   const reversedArray = await sortedArray.reverse()
+//   const jsonContent = await JSON.stringify(reversedArray)
+
+//   fs.writeFile('content/blogs.json', jsonContent, (err) => {
+//     if (err) throw new Error(err)
+//   })
+// }
+// writeBlogs()
+
+const writeEntries = async (type) => {
+  const fileArray = await getFiles(`content/${type}/`)
 
   // Order array by date (default asc)
   const sortedArray = await fileArray.sort((a, b) => {
@@ -42,9 +60,10 @@ const writeBlogs = async () => {
   const reversedArray = await sortedArray.reverse()
   const jsonContent = await JSON.stringify(reversedArray)
 
-  fs.writeFile('content/blogs.json', jsonContent, (err) => {
+  fs.writeFile(`content/${type}.json`, jsonContent, (err) => {
     if (err) throw new Error(err)
   })
 }
 
-writeBlogs()
+const types = ['news', 'events', 'jobs']
+types.map((type) => writeEntries(type))
