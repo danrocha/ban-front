@@ -1,4 +1,6 @@
-import blogs from './content/blogs.json'
+import news from './content/news.json'
+import jobs from './content/jobs.json'
+import events from './content/events.json'
 
 export default {
   mode: 'universal',
@@ -151,6 +153,10 @@ export default {
     }
   },
   generate: {
-    routes: [].concat(blogs.map((blog) => `/blog/${blog.slug}`))
+    routes: [
+      ...news.map((news) => `/news/${news.slug}`),
+      ...jobs.map((job) => `/jobs/${job.slug}`),
+      ...events.map((event) => `/events/${event.slug}`)
+    ]
   }
 }
