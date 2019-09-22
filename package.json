@@ -13,7 +13,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "node content/index.js && nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest"
   },
@@ -21,6 +21,8 @@
     "@nuxtjs/apollo": "^4.0.0-rc13",
     "@nuxtjs/axios": "^5.3.6",
     "core-js": "^2.6.9",
+    "front-matter-markdown": "^0.4.3",
+    "frontmatter-markdown-loader": "^2.1.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
