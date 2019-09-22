@@ -4,6 +4,9 @@ backend:
 publish_mode: editorial_workflow
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
+show_preview_link: true
+display_url: https://ban.netlify.com
+logo_url: https://ban.netlify.com/logo_ban.png
 collections:
   - name: "blog"
     label: "Blog"
@@ -63,11 +66,11 @@ collections:
     fields:
       - {label: "Type", name: "type", widget: "string", required: false, hint: "Exhibition Opening, Meetup, Seminar, Talk, etc."}
       - {label: "Title", name: "title", widget: "string", required: true}
-      - {label: "Date", name: "date", widget: "date", required: true}
+      - {label: "Date", name: "date", widget: "datetime", required: true}
       - {label: "Time", name: "time", widget: "time", required: false}
       - {label: "Venue", name: "venue", widget: "string", required: true}
       - {label: "Link", name: "url", widget: "string", required: false, hint: Link to the venue or directly to the event page.}
       - {label: "Summary", name: summary, widget: text, required: true}
       - {label: "Body", name: "body", widget: "markdown", required: true}
-      - {label: "Publish Date", name: "date", widget: "date", required: true}
+      - {label: "Publish Date", name: "publish_date", widget: "date", required: true}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
