@@ -18,29 +18,7 @@
             >&rarr;</span
           >
         </h2>
-        <ul>
-          <li v-for="x in 3" :key="x" class="mb-4 flex">
-            <!-- <figure class="mr-4">
-            <img
-              src="https://via.placeholder.com/400x200"
-              width="400px"
-              height="200px"
-            />
-          </figure> -->
-            <p class="uppercase font-mono text-sm mr-4 mt-1">
-              25.09<br />19:00
-            </p>
-            <div>
-              <h3 class="font-semibold mr-4">Exhibition opening</h3>
-              <p>
-                Peter Wilson: Small World Theory
-              </p>
-              <p>
-                @ SATELLIT Architektur Galerie Berlin
-              </p>
-            </div>
-          </li>
-        </ul>
+        <event-list :event-list="eventList" />
       </section>
       <!-- <section id="events">
       <h2 class="font-mono text-xl mb-4">
@@ -120,11 +98,37 @@
 </template>
 
 <script>
+import events from '~/content/events.json'
 import Logo from '~/components/Logo'
+import EventList from '~/components/EventList'
 export default {
   name: 'Home',
   components: {
+    EventList,
     Logo
+  },
+  data() {
+    return {
+      eventList: []
+    }
+  },
+  async asyncData({ app, error }) {
+    async function awaitImport(event) {
+      const wholeMD = await import(`~/content/events/${event.slug}.md`)
+      return {
+        attributes: wholeMD.attributes,
+        link: event.slug
+      }
+    }
+
+    const eventList = await Promise.all(
+      events.map((event) => awaitImport(event))
+    ).then((res) => {
+      return {
+        eventList: res
+      }
+    })
+    return eventList
   },
   head() {
     return {

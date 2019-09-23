@@ -43,7 +43,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~plugins/filters.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -147,8 +147,11 @@ export default {
       config.module.rules.push({
         test: /\.md$/,
         loader: 'frontmatter-markdown-loader',
+        // include: path.resolve(__dirname, 'contents'),
         options: {
-          vue: true
+          vue: {
+            root: 'dynamicMarkdown'
+          }
         }
       })
     }

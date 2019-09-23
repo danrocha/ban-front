@@ -21,11 +21,12 @@
     "@nuxtjs/apollo": "^4.0.0-rc13",
     "@nuxtjs/axios": "^5.3.6",
     "core-js": "^2.6.9",
-    "front-matter-markdown": "^0.4.3",
-    "frontmatter-markdown-loader": "^2.1.0",
+    "date-fns": "^2.2.1",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "front-matter-markdown": "^0.4.3",
+    "frontmatter-markdown-loader": "^2.1.0",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/tailwindcss": "^1.1.2",
