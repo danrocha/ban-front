@@ -1,6 +1,4 @@
-# lutas-front
-
-> Lutas Anticapital - Frontend
+# BAN - Berlin Architectural Network
 
 ## Build Setup
 
